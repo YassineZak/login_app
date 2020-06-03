@@ -1,0 +1,13 @@
+{% extends "base.html.twig"%}
+{% block title %}
+    {{ parent()  }} - generate password
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+
+<h5>Click on the link below to generate a new password</h5>
+<a href="http://localhost:8000/reset?mail={{ user.email }}&token={{ user.tokenRegistration }}"><button class="btn btn-primary">generate</button></a>
+
+{% endblock %}

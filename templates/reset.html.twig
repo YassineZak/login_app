@@ -1,0 +1,41 @@
+{% extends "base.html.twig"%}
+{% block title %}
+    {{ parent()  }} - Reset Password
+{% endblock %}
+{% block body %}
+    <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
+        {{ form_start(form, {'attr': {'class': 'login100-form validate-form'}}) }}
+        <span class="login100-form-title p-b-55">
+						Reset Password
+					</span>
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger col-md-12" style="text-align: center">{{ message }}</div>
+        {% endfor %}
+
+        <div class="wrap-input100 validate-input m-b-16" data-validate = "Password must contain at least 8 characters, one upper case and one special character">
+            {{ form_row(form.plainPassword.first,{'attr': {'class': 'input100','placeholder': 'Password'}} ) }}
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+							<span class="lnr lnr-lock"></span>
+						</span>
+        </div>
+
+        <div class="wrap-input100 validate-input m-b-16" data-validate = "Passwords doesnt seems the same">
+            {{ form_row(form.plainPassword.second,{'attr': {'class': 'input100','placeholder': 'Repeat Password'}} ) }}
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+							<span class="lnr lnr-lock"></span>
+						</span>
+        </div>
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+
+        <div class="container-login100-form-btn p-t-25">
+            <button class="login100-form-btn" type="submit">
+                Register
+            </button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
